@@ -22,8 +22,7 @@ class EmployeeController extends BaseController
         $allEmployee = $this->employeeModel->findAll();
 
         $employeeData['allEmployee'] = $allEmployee;
-        //URL helper to upload file from public folder
-        helper('url');
+        
         //sent it to the view file 
         return view('employee/index',$employeeData);
     }
@@ -56,13 +55,13 @@ class EmployeeController extends BaseController
 
         //save the data into db through model object 
         $this->employeeModel->save($data);
-        return redirect()->to('/');
+        return redirect()->to('employee/index');
 
 
     }
     public function edit($id){
         $data['employee_details'] = $this->employeeModel->find($id);
-        helper(['form','url']);
+        
         return view('employee/edit',$data);
 
     }
@@ -76,23 +75,24 @@ class EmployeeController extends BaseController
             
         ]);
         $file = $this->request->getFile('new_image');
+        $imagePath = $this->request->getPost('old_image');
         if($file->isValid() && !$file->hasMoved()){
 
             //Delete the pervious image from folder
-            $oldImage = $this->request->getPost('old_image');
-            if(file_exists(FCPATH.$oldImage)){
-                unlink(FCPATH.$oldImage);
+            
+            if($imagePath && file_exists(FCPATH . $imagePath)){
+                unlink(FCPATH . $imagePath);
             } 
             $newImage  = $file->getRandomName();
             $file->move(ROOTPATH.'public/upload/image',$newImage);
-            $newImagePath = 'upload/image/'.$newImage;
+            $imagePath = 'upload/image/'.$newImage;
             
 
         }
        
-        $data['picture']= $newImagePath;
+        $data['picture']= $imagePath;
         $this->employeeModel->save($data);
-        return redirect()->to('/');
+        return redirect()->to('employee/index');
         
     }
     public function destroy($id){
@@ -102,7 +102,7 @@ class EmployeeController extends BaseController
         }
        
         $this->employeeModel->delete($id);
-        return redirect()->to('/');
+        return redirect()->to('employee/index');
 
     }
 

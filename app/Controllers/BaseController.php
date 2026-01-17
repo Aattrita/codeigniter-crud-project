@@ -39,6 +39,7 @@ abstract class BaseController extends Controller
 
         // Caution: Do not edit this line.
         parent::initController($request, $response, $logger);
+        helper("form");
 
         // Preload any models, libraries, etc, here.
         // $this->session = service('session');
