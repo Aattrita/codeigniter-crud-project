@@ -92,7 +92,7 @@ button[type="submit"]:hover {
     <div class="main-div">
         <h1>Adding New Employee</h1>
         <div class="form">
-            <?= form_open_multipart('employee',['id'=>'create_form'])?>
+            <?= form_open_multipart(url_to('employee.store'),['id'=>'create_form'])?>
                 <lable for="name" class="form-lebel">Full Name</lable>
                 <input type="text" name="name" class="input-box" id="name">
                 <lable for="address" class="form-lebel">Address</label>

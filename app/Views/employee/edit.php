@@ -93,7 +93,7 @@ button:hover {
     <div class="main-div">
         <h1>Edit Employee</h1>
         <div class="form">
-            <?= form_open_multipart('employee/update',['id'=>'edit_form'])?>
+            <?= form_open_multipart(url_to('employee.update'),['id'=>'edit_form'])?>
                 <input type="hidden" name="id" value="<?= esc($employee_details['id']) ?>">
                 <label for="name" class="form-lebel">Full Name</label>
                 <input type="text" name="name" class="input-box" id="name" value="<?= esc($employee_details['name'])?>">

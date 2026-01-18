@@ -29,7 +29,7 @@ class EmployeeController extends BaseController
     public function create()
     {
         // The view page for the creation
-        helper(['form','url']);
+        
         return view('employee/create');
     }
     public function store(){
@@ -55,7 +55,7 @@ class EmployeeController extends BaseController
 
         //save the data into db through model object 
         $this->employeeModel->save($data);
-        return redirect()->to('employee/index');
+        return redirect()->to('/employee/index');
 
 
     }
@@ -92,7 +92,7 @@ class EmployeeController extends BaseController
        
         $data['picture']= $imagePath;
         $this->employeeModel->save($data);
-        return redirect()->to('employee/index');
+        return redirect()->to('/employee/index');
         
     }
     public function destroy($id){
@@ -102,7 +102,7 @@ class EmployeeController extends BaseController
         }
        
         $this->employeeModel->delete($id);
-        return redirect()->to('employee/index');
+        return redirect()->to('/employee/index');
 
     }
 

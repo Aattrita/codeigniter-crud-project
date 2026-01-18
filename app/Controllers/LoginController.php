@@ -54,7 +54,13 @@ class LoginController extends BaseController
                 return redirect()->to('/');
             }
             else{
-                return redirect()->to('employee/index');
+                
+                $employeeData = [
+                    'email_id'  => $loginInfo['email_id'],
+                    'is_logged_in' => true
+                ];
+                session()->set($employeeData);
+                return redirect()->to('/employee/index');
             }
         }
     }

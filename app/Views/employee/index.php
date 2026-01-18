@@ -109,7 +109,7 @@ td .button {
     <heading>
         <h1>Employee List</h1>
         <div class="button">
-            <a href="<?= url_to('employee')?>" class="add">Add New Employee</a>
+            <a href="<?= url_to('employee.create')?>" class="add">Add New Employee</a>
         </div>
     </heading>
     <table>
@@ -146,8 +146,8 @@ td .button {
                     <td><img src="<?= base_url($employee['picture'])?>"></td>
                     <td>
                         <div class="button">
-                            <a href="<?= url_to('employee/edit',$employee['id'])?>" class="edit">Edit</a>
-                            <a href="<?= url_to('employee/delete',$employee['id'])?>" class="delete">Delete</a>
+                            <a href="<?= url_to('employee.edit',$employee['id'])?>" class="edit">Edit</a>
+                            <a href="<?= url_to('employee.delete',$employee['id'])?>" class="delete">Delete</a>
                         </div>
                         
                     </td>
